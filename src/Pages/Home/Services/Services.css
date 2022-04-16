@@ -1,0 +1,13 @@
+.services-area{
+    margin-top: 20px;
+}
+.services{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media only screen and  (max-width: 667px){
+.services{
+    grid-template-columns: 1fr;
+}
+}

@@ -1,0 +1,9 @@
+.checkout-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.img-area img{
+    width: 300px;
+}

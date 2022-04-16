@@ -5,7 +5,7 @@ const Navigation = () => {
     return (
         <Navbar collapseOnSelect expand="md" bg="primary" variant="dark">
             <Container>
-                <Navbar.Brand href="/home">Weeding-Photographer</Navbar.Brand>
+                <Navbar.Brand href="/">Weeding-Photographer</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
