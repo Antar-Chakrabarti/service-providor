@@ -1,8 +1,15 @@
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Navigation from './components/Navigation/Navigation';
+import { Route, Routes } from 'react-router-dom';
+import Home from './Pages/Home/Home/Home';
 function App() {
   return (
-    <div>
-      <h1>Hey buddy!</h1>
+    <div className='App'>
+      <Navigation/>
+      <Routes>
+        <Route path='/home' element={<Home/>}/>
+      </Routes>
     </div>
   );
 }
