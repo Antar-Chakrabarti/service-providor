@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle} from 'react-firebase-hooks/auth';
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
+import { Link,  useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import google from '../../images/google.png';
 
@@ -8,7 +8,6 @@ const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const location = useLocation();
     const navigate = useNavigate();
     const [
         createUserWithEmailAndPassword,
@@ -19,7 +18,9 @@ const Signup = () => {
 
 
     const [signInWithGoogle, user1, loading1, error2] = useSignInWithGoogle(auth);
-
+    if(error1 || error2){
+        setError(error1, error2)
+    }
 
     const handleEmailChange = (e) => {
         const emailRegex = /\S+@\S+\.\S+/;
@@ -66,6 +67,7 @@ const Signup = () => {
                     <img style={{ width: '30px' }} src={google} alt="" />
                     Continue with google
                 </button>
+                <p>{error}</p>
             </form>
         </div>
     );
