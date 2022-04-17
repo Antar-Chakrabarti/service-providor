@@ -1,0 +1,9 @@
+.abot-me-section{
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.abot-me-section h2{
+    color: #EF5354;
+}

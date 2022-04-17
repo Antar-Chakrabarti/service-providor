@@ -13,12 +13,12 @@ const Navigation = () => {
     return (
         <Navbar collapseOnSelect expand="md" bg="primary" variant="dark">
             <Container>
-                <Navbar.Brand href="/">Weeding-Photographer</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">Weeding-Photographer</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#features">Features</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
+                        <Nav.Link as={Link} to="/aboutme">About me</Nav.Link>
+                        <Nav.Link as={Link} to="/blog">Blog</Nav.Link>
                     </Nav>
                     <Nav>
                         {user ?
@@ -26,7 +26,7 @@ const Navigation = () => {
                                 log out
                             </Nav.Link>
                             :
-                            <Nav.Link href="/login">Login</Nav.Link>
+                            <Nav.Link as={Link} to ="/login">Login</Nav.Link>
                         }
                     </Nav>
                 </Navbar.Collapse>
