@@ -1,7 +1,10 @@
 import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const Navigation = () => {
+    const [user, loading] = useAuthState(auth);
     return (
         <Navbar collapseOnSelect expand="md" bg="primary" variant="dark">
             <Container>
@@ -13,10 +16,12 @@ const Navigation = () => {
                         <Nav.Link href="#pricing">Pricing</Nav.Link>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="/login">Login</Nav.Link>
-                        <Nav.Link eventKey={2} href="/logout">
-                            Log out
-                        </Nav.Link>
+                        {user?
+                            <Nav.Link href="/login">Login</Nav.Link>
+                            :
+                        <Nav.Link eventKey={2} href="/signup">
+                            Sign up
+                        </Nav.Link>}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

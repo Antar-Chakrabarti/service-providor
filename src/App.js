@@ -6,6 +6,7 @@ import Home from './Pages/Home/Home/Home';
 import Checkout from './components/Checkout/Checkout';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import Login from './Pages/Login/Login';
+import Signup from './Pages/Signup/Signup';
 function App() {
   return (
     <div className='App'>
@@ -18,6 +19,7 @@ function App() {
           </RequireAuth>
         } />
         <Route path='login' element={<Login/>}/>
+        <Route path='signup' element={<Signup/>}/>
       </Routes>
     </div>
   );

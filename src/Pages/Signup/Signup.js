@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
+import { useCreateUserWithEmailAndPassword, useSignInWithGoogle} from 'react-firebase-hooks/auth';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import './Login.css';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import google from '../../images/google.png';
 
-const Login = () => {
+const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const location  = useLocation();
+    const location = useLocation();
     const navigate = useNavigate();
     const [
-        signInWithEmailAndPassword,
+        createUserWithEmailAndPassword,
         user,
         loading,
         error1,
-    ] = useSignInWithEmailAndPassword(auth);
-    const from = location.state?.from?.pathname || '/';
+    ] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
+
+
+    const [signInWithGoogle, user1, loading1, error2] = useSignInWithGoogle(auth);
+
+
     const handleEmailChange = (e) => {
         const emailRegex = /\S+@\S+\.\S+/;
         const validEmail = emailRegex.test(e.target.value);
@@ -36,30 +40,35 @@ const Login = () => {
             setError('Password should contain six character')
         }
     }
-    const handleLogin = (e) => {
+
+    const handleSignUp = (e) => {
         e.preventDefault();
-        signInWithEmailAndPassword(email, password);
-        if (user) {
-            navigate(from, { replace: true });
-        }
+        createUserWithEmailAndPassword(email, password)
     }
-    
-    if(loading){
-        return <p>Loading.....</p>
+    const handleGoogleSignUp = ()=>{
+        signInWithGoogle()
+    }
+    if (user || user1) {
+        navigate('/')
     }
     return (
         <div className='login-container'>
-            <div className="login-title">Login</div>
-            <form className="login-form" onSubmit={handleLogin}>
-                <input type="text" placeholder='Your Email' onChange={handleEmailChange}  required/>
+            <div className="login-title">Sign up</div>
+            <form className="login-form" onSubmit={handleSignUp}>
+                <input type="text" placeholder='Your Name' />
+                <input type="text" placeholder='Your Email' onChange={handleEmailChange} required />
                 <input type="password" name="password" placeholder='Your Password' id="" onChange={handlePasswordChange} required />
-                <button>Login</button>
+                <button>sign up</button>
                 {error && <p className='error-message'>{error}</p>}
                 {error1 && <p className='error-message'>{error1}</p>}
-                <Link className='signup-page' to='/signup'>Sign up</Link>
+                <Link className='signup-page' to='/login'>Login</Link>
+                <button onClick={handleGoogleSignUp}>
+                    <img style={{ width: '30px' }} src={google} alt="" />
+                    Continue with google
+                </button>
             </form>
         </div>
     );
 };
 
-export default Login;
+export default Signup;
