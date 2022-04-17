@@ -7,6 +7,8 @@ import Checkout from './components/Checkout/Checkout';
 import RequireAuth from './components/RequireAuth/RequireAuth';
 import Login from './Pages/Login/Login';
 import Signup from './Pages/Signup/Signup';
+import Footer from './components/Footer/Footer';
+import NotFound from './components/NotFound/NotFound';
 function App() {
   return (
     <div className='App'>
@@ -20,7 +22,9 @@ function App() {
         } />
         <Route path='login' element={<Login/>}/>
         <Route path='signup' element={<Signup/>}/>
+        <Route path='*' element={<NotFound/>}/>
       </Routes>
+      <Footer/>
     </div>
   );
 }

@@ -1,0 +1,9 @@
+.notfound{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.notfound h1{
+    font-weight: 900;
+    
+}

@@ -12,7 +12,7 @@ const Service = ({ serve }) => {
         <div className='breakfast'>
 
             <div className="cart">
-                <img className='cart-img' src={picture} alt="" />
+                <img style={{height: '150px', width: '150px', borderRadius: '10px', objectFit: 'cover'}} className='cart-img' src={picture} alt="" />
                 <h5>{name}</h5>
                 <p><small>{about}</small></p>
                 <h4>{price}</h4>
