@@ -2,7 +2,7 @@
     position: relative;
     width: 350px;
     margin: 4rem auto;
-    height: 500px;
+    min-height: 500px;
     border-radius: 20px;
     padding: 40px;
     box-sizing: border-box;
@@ -54,7 +54,7 @@
 .login-container button:hover{
     box-shadow: none;
 }
-.error-message{
+.err-msg{
     color: red;
     text-align: center;
     font-size: 12px;
